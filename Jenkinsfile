@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
+        credentialsId: '14e56be23df2168e6107401e458b93a5225a2116',
         git 'https://github.com/virtapp/wordpress-appflex.git'
       }
     }

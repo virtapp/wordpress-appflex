@@ -8,7 +8,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 RUN add-apt-repository ppa:ondrej/php -y
 RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install \
-    apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 curl 
+    apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 curl mysql-client
 
 # Enable apache mods.
 RUN a2enmod php7.0

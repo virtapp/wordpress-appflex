@@ -18,9 +18,6 @@ RUN a2enmod rewrite
 RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/php.ini
 RUN sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.0/apache2/php.ini
 
-# Clone the conf files into the docker container
-#RUN git clone https://github.com/virtapp/appflex.git  
-
 # Manually set up the apache environment variables
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
@@ -33,6 +30,10 @@ EXPOSE 80
 
 # Copy this repo into place.
 ADD www /var/www
+
+# Clone the conf files into the docker container
+RUN git clone https://github.com/virtapp/appflex.git
+COPY . /var/www
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf

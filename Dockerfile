@@ -10,6 +10,10 @@ RUN add-apt-repository ppa:ondrej/php -y
 RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 curl mysql-client git
 
+# Clone the conf files into the docker container
+RUN git clone https://github.com/virtapp/appflex.git
+WORKDIR /appflex
+
 # Enable apache mods.
 RUN a2enmod php7.0
 RUN a2enmod rewrite
@@ -30,9 +34,6 @@ EXPOSE 80
 
 # Copy this repo into place.
 ADD www /var/www
-
-# Clone the conf files into the docker container
-RUN git clone https://github.com/virtapp/appflex.git
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf

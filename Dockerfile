@@ -19,7 +19,7 @@ RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/ph
 RUN sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.0/apache2/php.ini
 
 # Clone the conf files into the docker container
-RUN git clone https://github.com/virtapp/appflex.git /var/www/site
+RUN git clone https://github.com/virtapp/appflex.git /var/www
 
 # Manually set up the apache environment variables
 ENV APACHE_RUN_USER www-data
@@ -32,7 +32,7 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 EXPOSE 80
 
 # Copy this repo into place.
-ADD www /var/www/site
+ADD www /var/www
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf

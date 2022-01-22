@@ -33,7 +33,7 @@ ADD www /var/www
 
 # Clone the conf files into the docker container
 RUN git clone https://github.com/virtapp/appflex.git
-WORKDIR /appflex
+WORKDIR /
 COPY /appflex  /var/www
 
 

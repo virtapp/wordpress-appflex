@@ -32,9 +32,10 @@ EXPOSE 80
 ADD www /var/www
 
 # Clone the conf files into the docker container
-RUN git clone https://github.com/virtapp/appflex.git /var/www
+RUN cd /var/www
+RUN git clone https://github.com/virtapp/appflex.git
 WORKDIR /var/www
-#COPY ./ /var/www
+
 
 
 # Update the default apache site with the config we created.

@@ -34,7 +34,8 @@ ADD www /var/www
 # Clone the conf files into the docker container
 RUN git clone https://github.com/virtapp/appflex.git
 WORKDIR /
-COPY appflex/*.*  /var/www
+ARG war_FILE=/appflex/*.*
+COPY ${war_FILE} /var/www
 
 
 # Update the default apache site with the config we created.

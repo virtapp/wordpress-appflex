@@ -33,14 +33,12 @@ ADD www /var/www
 
 # Clone the conf files into the docker container
 RUN cd /var/www && git clone https://github.com/virtapp/appflex.git
-#RUN git clone https://github.com/virtapp/appflex.git
 #WORKDIR /var/www
-
 
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
-
+ADD apache2.conf /etc/apache2/apache2.conf
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND

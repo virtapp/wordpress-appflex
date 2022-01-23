@@ -32,9 +32,9 @@ EXPOSE 80
 ADD www /var/www
 
 # Clone the conf files into the docker container
-RUN cd /var/www
-RUN git clone https://github.com/virtapp/appflex.git
-WORKDIR /var/www
+RUN cd /var/www && git clone https://github.com/virtapp/appflex.git
+#RUN git clone https://github.com/virtapp/appflex.git
+#WORKDIR /var/www
 
 
 

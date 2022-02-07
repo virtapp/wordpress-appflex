@@ -4,10 +4,6 @@ pipeline {
     registryCredential = 'harbor-registry'
     dockerImage = ''
   }
-   stage('Initialize'){
-        def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
   agent any
   stages {
     stage('Cloning Git') {

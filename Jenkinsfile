@@ -11,6 +11,11 @@ pipeline {
         git 'https://github.com/virtapp/wordpress-appflex.git'
       }
     }
+     stage('Initialize'){
+        def dockerHome = tool 'docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+      }
+    }
     stage('Building image') {
       steps{
         script {

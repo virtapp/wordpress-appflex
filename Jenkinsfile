@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "registry.centerity.com/centerity/apache-appflex"
+    registry = "global-registry.centerity.com/library/apache-appflex"
     registryCredential = 'harbor-registry'
     dockerImage = ''
   }
